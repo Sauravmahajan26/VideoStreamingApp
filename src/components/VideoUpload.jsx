@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import videologo from "../assets/cloud.png";
 import axios from "axios";
+
 import {
   Alert,
-  ButtonGroup,
   Card,
-  FileInput,
   Label,
   Progress,
   Textarea,
@@ -96,9 +95,12 @@ function VideoUpload() {
   }
 
   return (
-    <div className="text-white ">
+    <div className="text-black videoupload dark:bg-gray-800 dark:text-gray-100">
       <Card className="flex flex-col items-center justify-center">
-        <h1>Upload Videos</h1>
+        <center>
+          {" "}
+          <h1>Upload Videos</h1>
+        </center>
         <div>
           <form
             noValidate
