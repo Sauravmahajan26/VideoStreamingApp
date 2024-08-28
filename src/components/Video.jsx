@@ -1,7 +1,7 @@
 import React from "react";
 import videologo from "../assets/video.png";
 
-function Video({ video }) {
+function Video({ video, onButtonClick }) {
   return (
     <div className="flex flex-col dark:bg-gray-800 dark:text-gray-100 p-4 rounded-md">
       <div className="flex items-center space-x-4">
@@ -14,6 +14,12 @@ function Video({ video }) {
           </p>
           <span className="text-sm font-medium">{video.contentType}</span>
         </div>
+        <button
+          onClick={() => onButtonClick(video.videoId)}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+        >
+          Play
+        </button>
       </div>
     </div>
   );
