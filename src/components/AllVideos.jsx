@@ -1,13 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Video from "./Video";
+import VideoService from "../services/VideoService";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { VideoAction } from "../store/videoSlice";
 
-function AllVideos({ onVideoSelect }) {
+function AllVideos() {
   const [videos, setvideos] = useState([]);
-  const [vId, setvId] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     async function getAllVideo() {
-      const responce = await axios.get("http://localhost:8080/api/v1/videos");
+      const responce = await VideoService.getAllVideos();
       setvideos(responce.data);
     }
     getAllVideo();
@@ -15,21 +21,25 @@ function AllVideos({ onVideoSelect }) {
 
   const handleButtonClick = (vIdx) => {
     console.log("Selected video ID: " + vIdx);
-    onVideoSelect(vIdx);
+    dispatch(VideoAction.selectedVideoId(vIdx));
+    navigate("/");
   };
 
   return (
     <>
-      <h1>Videos</h1>
-
-      <div>
-        {videos.map((video) => (
-          <Video
-            key={video.videoId}
-            video={video}
-            onButtonClick={handleButtonClick}
-          />
-        ))}
+      <div className="col" style={{ marginTop: "115px" }}>
+        <h1 className="text-2xl font-bold text-gray-700 dark:text-gray-100 text-center">
+          Videos
+        </h1>
+        <div className="px-3">
+          {videos.map((video) => (
+            <Video
+              key={video.videoId}
+              video={video}
+              onButtonClick={handleButtonClick}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

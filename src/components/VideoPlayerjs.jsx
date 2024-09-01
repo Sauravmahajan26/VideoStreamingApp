@@ -3,11 +3,16 @@ import videojs from "video.js";
 import Hls from "hls.js";
 import "video.js/dist/video-js.css";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
-function VideoPlayer({ src }) {
+function VideoPlayer() {
   const videoRef = useRef(null);
   const playerRef = useRef(null);
+  const fetchVideoId = useSelector((store) => store.videoId);
+  console.log(`fetchVideoId ${fetchVideoId}`);
 
+  const src = `http://localhost:8080/api/v1/videos/${fetchVideoId}/master.m3u8`;
   useEffect(() => {
     //for init
 

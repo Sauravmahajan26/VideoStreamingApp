@@ -1,3 +1,6 @@
 body {
   color-scheme: light dark;
 }
+.sidebar {
+  min-height: 675px;
+}
