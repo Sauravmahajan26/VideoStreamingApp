@@ -95,7 +95,7 @@ function VideoUpload() {
   }
 
   return (
-    <div className="text-black videoupload dark:bg-gray-800 dark:text-gray-100">
+    <div className="text-black videoupload dark:bg-gray-800 dark:text-gray-100 bg-gray-800">
       <Card className="flex flex-col items-center justify-center">
         <center>
           {" "}

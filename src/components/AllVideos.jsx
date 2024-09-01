@@ -15,7 +15,6 @@ function AllVideos({ onVideoSelect }) {
 
   const handleButtonClick = (vIdx) => {
     console.log("Selected video ID: " + vIdx);
-
     onVideoSelect(vIdx);
   };
 

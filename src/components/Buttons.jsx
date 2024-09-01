@@ -9,23 +9,23 @@ function Buttons() {
   };
 
   const handlePlayerButton = () => {
-    navigate("/playVideo");
+    navigate("/App");
   };
   return (
     <div className="flex space-x-7">
       <button
         onClick={handleAddPlayer}
         type="button"
-        class="btn btn-outline-success"
+        className="btn btn-outline-success"
       >
         Add Video
       </button>
       <button
         onClick={handlePlayerButton}
         type="button"
-        class="btn btn-outline-info"
+        className="btn btn-outline-info"
       >
-        play video
+        All videos
       </button>
     </div>
   );

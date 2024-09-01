@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from "react";
 import VideoUpload from "./components/VideoUpload";
 import { Toaster } from "react-hot-toast";
-import VideoPlayer from "./components/VideoPlayer";
+import VideoPlayerjs from "./components/VideoPlayerjs";
 import { useNavigate } from "react-router-dom";
 import Buttons from "./components/Buttons";
 import AllVideos from "./components/AllVideos";
 
 function App() {
   const navigate = useNavigate();
-  const [videoId, setVideoId] = useState("");
+  const [videoId, setVideoId] = useState(
+    "fc3484e3-47a9-43ed-ad9c-21199c5c12b0"
+  );
+  const [loading, setLoading] = useState(false);
 
   const handleVideoSelect = (id) => {
-    console.log("Video selected:", id); // Confirm the ID being passed
+    console.log("Video selected:", id);
+
     setVideoId(id);
   };
-
-  // Log videoId changes
-  useEffect(() => {
-    console.log("videoId updated:", videoId);
-  }, [videoId]);
 
   return (
     <>
@@ -28,11 +27,13 @@ function App() {
           Video Streaming App
         </h1>
         <Buttons />
-        {videoId ? (
-          <VideoPlayer videoId={videoId} />
-        ) : (
-          <AllVideos onVideoSelect={handleVideoSelect} />
-        )}
+        {/* Video Player */}
+        <div className="w-full max-w-3xl">
+          <VideoPlayerjs
+            src={`http://localhost:8080/api/v1/videos/${videoId}/master.m3u8`}
+          />
+        </div>
+        <AllVideos onVideoSelect={handleVideoSelect} />
       </div>
     </>
   );
